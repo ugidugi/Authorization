@@ -6,7 +6,7 @@
         <id name="role_id" column="role_id"></id>
         <property name="role" column="role"/>
         <many-to-one name="user" class="com.models.User" fetch="select">
-            <column name="login" not-null="true"/>
+            <column name="user_id" not-null="true"/>
         </many-to-one>
 
     </class>
