@@ -1,0 +1,32 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+
+</h:head>
+<h:body>
+    Hello Admin
+    <form action="${request.contextPath}/appLogout" method="POST">
+        <input type="submit" value="Logout"/>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    </form>
+    <h:dataTable value="#{show_users_bean.show_admins}" var="user">
+        <h:column>
+            <f:facet name="Header">Login</f:facet>
+            ${user.login}
+        </h:column>
+        <h:column>
+            <f:facet name="Header">First name</f:facet>
+            ${user.firstName}
+        </h:column>
+        <h:column>
+            <f:facet name="Header">Last name</f:facet>
+            ${user.lastName}
+        </h:column>
+        <h:column>
+            <f:facet name="Header">Mail</f:facet>
+            ${user.mail}
+        </h:column>
+    </h:dataTable>
+</h:body>
+
+</html>

@@ -10,16 +10,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class Main {
     public static void main(String[] args) {
         UserDaoImpl userDao = new UserDaoImpl();
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        User user = new User();
-        user.setLogin("dugi");
-        user.setFirstName("Sergry");
-        user.setLastName("Kurinniy");
-        user.setMail("serkurinniy@gmail.com");
-        user.setPassword(passwordEncoder.encode("pass"));
-        user.setEnable(true);
-        userDao.add(user);
-
-
+        for(User user: userDao.showAll("ROLE_USER")){
+            System.out.println(user);
+            System.out.println(user.getPassword());
+            for(UserRole userRole: user.getRoles()){
+                System.out.println("Role: " + userRole.getRole());
+            }
+        }
     }
 }

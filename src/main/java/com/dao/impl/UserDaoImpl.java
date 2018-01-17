@@ -6,8 +6,8 @@ import com.models.UserRole;
 import com.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.hibernate.resource.transaction.spi.TransactionStatus;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,4 +54,26 @@ public class UserDaoImpl implements UserDao{
             session.close();
         }
     }
+
+    @Override
+    public List<User> showAll(String user_role) {
+        List<User> users = new ArrayList<User>();
+        session = HibernateUtil.getSessionFactory().openSession();
+        tx = session.beginTransaction();
+        //users = session.createQuery("from User left join UserRole on " +
+                //"User.user_id = UserRole.user.user_id where UserRole.role =?").setParameter(0,"ROLE_ADMIN").list();
+        Query query = session.createQuery("from User as user left join UserRole as role on user.user_id=role.user.user_id where role.role='"+user_role+"'");
+        List<Object[]> list = query.list();
+        for(Object object[]: list){
+            User user = (User) object[0];
+            users.add(user);
+        }
+        if (session.getTransaction().getStatus().equals(TransactionStatus.ACTIVE)) {
+            session.getTransaction().commit();
+            session.close();
+        }
+        return users;
+    }
+
+
 }
