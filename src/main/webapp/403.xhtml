@@ -1,0 +1,11 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:body>
+    <h1>Acsess is Denied</h1>
+    <h:form>
+        <h:commandButton value="Back to login" action="/home/welcome.xhtml"/>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    </h:form>
+</h:body>
+</html>

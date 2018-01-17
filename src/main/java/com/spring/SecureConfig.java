@@ -16,7 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-@ComponentScan({ "com.*" })
+@ComponentScan({ "com.service*" })
 public class SecureConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -30,17 +30,20 @@ public class SecureConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().
-                antMatchers("/secure/**").access("hasRole('ROLE_USER')").
+        http.
+                authorizeRequests().antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')").and().
+                authorizeRequests().antMatchers("/home/**").access("hasAnyAuthority('ROLE_USER','ROLE_ADMIN')").
                 and().formLogin().  //login configuration
                 loginPage("/customLogin.xhtml").
                 loginProcessingUrl("/appLogin").
-                usernameParameter("app_username").
-                passwordParameter("app_password").
-                defaultSuccessUrl("/secure/welcome.xhtml").
+                usernameParameter("login").
+                passwordParameter("password").
+                defaultSuccessUrl("/home/welcome.xhtml").
                 and().logout().    //logout configuration
                 logoutUrl("/appLogout").
-                logoutSuccessUrl("/customLogin.xhtml");
+                logoutSuccessUrl("/customLogin.xhtml").and().
+                exceptionHandling().accessDeniedPage("/403.xhtml");
+
 
     }
 
