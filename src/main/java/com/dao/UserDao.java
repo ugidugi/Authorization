@@ -8,5 +8,6 @@ public interface UserDao {
     User findUserByLogin(String login);
     void add(Object object);
     List<User> showAll(String role);
+    void updateAdmin(List<User> users);
 
 }

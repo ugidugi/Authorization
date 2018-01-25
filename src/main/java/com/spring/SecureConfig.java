@@ -32,7 +32,7 @@ public class SecureConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.
                 authorizeRequests().antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')").and().
-                authorizeRequests().antMatchers("/home/**").access("hasAnyAuthority('ROLE_USER','ROLE_ADMIN')").
+                authorizeRequests().antMatchers("/home/**").access("hasAnyRole('ROLE_USER','ROLE_ADMIN')").
                 and().formLogin().  //login configuration
                 loginPage("/customLogin.xhtml").
                 loginProcessingUrl("/appLogin").

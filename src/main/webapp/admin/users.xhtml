@@ -4,6 +4,11 @@
 
 </h:head>
 <h:body>
-    <h:dataTable></h:dataTable>
+    <h:form>
+        <h:inputText value="#{show_users_bean.userLogin}"/>
+        <h:commandButton value="Searsh" action="#{show_users_bean.searshUser(show_users_bean.userLogin)}"/>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    </h:form>
+    <h1>#{show_users_bean.user}</h1>
 </h:body>
 </html>

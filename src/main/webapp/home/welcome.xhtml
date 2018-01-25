@@ -9,6 +9,10 @@
         <input type="submit" value="Logout"/>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
+    <h:form>
+        <h:commandButton value="user list" action="/admin/admins.xhtml"/>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    </h:form>
 </h:body>
 
 </html>

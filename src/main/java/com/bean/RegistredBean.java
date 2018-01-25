@@ -4,7 +4,6 @@ package com.bean;
 
 import com.dao.UserDao;
 import com.dao.impl.UserDaoImpl;
-import com.dao.impl.UserRoleDaoImpl;
 import com.models.User;
 import com.models.UserRole;
 import com.util.HibernateUtil;

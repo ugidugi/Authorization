@@ -12,6 +12,7 @@
         <property name="show_sql">true</property>
         <property name="connection.pool_size">100</property>
         <property name="current_session_context_class">thread</property>
+        <property name="c3p0.timeout">300</property>
         <mapping class="com.models.User"/>
         <mapping class="com.models.UserRole"/>
 

@@ -9,24 +9,37 @@
         <input type="submit" value="Logout"/>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
-    <h:dataTable value="#{show_users_bean.show_admins}" var="user">
-        <h:column>
-            <f:facet name="Header">Login</f:facet>
-            ${user.login}
-        </h:column>
-        <h:column>
-            <f:facet name="Header">First name</f:facet>
-            ${user.firstName}
-        </h:column>
-        <h:column>
-            <f:facet name="Header">Last name</f:facet>
-            ${user.lastName}
-        </h:column>
-        <h:column>
-            <f:facet name="Header">Mail</f:facet>
-            ${user.mail}
-        </h:column>
-    </h:dataTable>
+        <h:dataTable value="#{show_users_bean.show_admins}" var="user">
+            <h:column>
+                <f:facet name="header">Login</f:facet>
+                ${user.login}
+            </h:column>
+            <h:column>
+                <f:facet name="header">First name</f:facet>
+                ${user.firstName}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Last name</f:facet>
+                ${user.lastName}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Mail</f:facet>
+                ${user.mail}
+            </h:column>
+            <h:column>
+                <h:form>
+                    <f:facet name="header">Enable</f:facet>
+                    <h:selectBooleanCheckbox value="#{user.enable}"/>
+                    <h:commandButton value="Submit"/>
+                </h:form>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Admin</f:facet>
+                <h:selectBooleanCheckbox value="#{show_users_bean.check_admin(user)}"/>
+            </h:column>
+        </h:dataTable>
+        <h:commandButton value="Submit"/>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </h:body>
 
 </html>

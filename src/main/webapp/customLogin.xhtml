@@ -1,6 +1,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
+    <h:outputStylesheet library="js" name="index.js"/>
 </h:head>
 <h:body>
     <font color="red">
@@ -10,7 +11,7 @@
         <h:outputLabel value="Enter UserName:" />
         <input type="text" name="login"/><br/><br/>
         <h:outputLabel value="Enter Password:" />
-        <input type="password" name="password"/> <br/><br/>
+        <input type="password" name="password" /> <br/><br/>
         <input type="submit" value="Login"/>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
